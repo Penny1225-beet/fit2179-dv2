@@ -1,0 +1,357 @@
+/* ── RESET & BASE ───────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+  background-color: #faf7f2;
+  color: #1a2e1a;
+  line-height: 1.6;
+}
+
+/* ── TITLE SECTION ──────────────────────────── */
+.title-section {
+  background-color: #1a2e1a;
+  color: #faf7f2;
+  padding: 60px 64px;
+}
+
+.title-section h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.title-section .subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: #a8c97f;
+}
+
+/* ── SECTIONS ───────────────────────────────── */
+.section {
+  padding: 56px 64px;
+  border-bottom: 1px solid #ddd8cf;
+}
+
+.section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a2e1a;
+}
+
+.section-intro {
+  font-size: 16px;
+  color: #6b6459;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+
+/* ── CHART ROW ──────────────────────────────── */
+.chart-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.chart-container {
+  flex: 0 0 auto;
+}
+
+/* ── INSIGHT BOX ────────────────────────────── */
+.insight-box {
+  flex: 1;
+  background-color: #f0ede6;
+  border-left: 4px solid #4e9dc4;
+  padding: 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  align-self: center;
+}
+
+.insight-box p {
+  margin-bottom: 10px;
+}
+
+.insight-box p:last-child {
+  margin-bottom: 0;
+}
+
+.insight-box strong {
+  color: #1a2e1a;
+}
+
+.source {
+  font-size: 12px;
+  color: #9b9590;
+  margin-top: 12px;
+}
+
+.hero-layout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 0 0 auto;
+  text-align: center;
+  max-width: 400px;
+  padding-bottom: 20px;
+}
+
+.hero-animal-wrap {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+
+.hero-animal-img--tiger {
+  height: 200px;
+  width: auto;
+ 
+  
+}
+
+.hero-animal-img--orang {
+  height: 220px;
+  width: auto;
+  
+}
+
+.hero-animal-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 13px;
+  color: #6b9e4a;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+
+/* ── INTRODUCTION ───────────────────────────── */
+.intro-section {
+  padding: 32px 64px;
+  border-bottom: 1px solid #ddd8cf;
+  display: flex;
+  background-color: #f0f5ee;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro-text {
+  max-width: 720px;
+}
+
+.intro-stats {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch; 
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #1a2e1a;
+  color: #faf7f2;
+  padding: 20px 16px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.stat-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #a8c97f;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+}
+
+/* ── RESET & BASE ───────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+  background-color: #faf7f2;
+  color: #1a2e1a;
+  line-height: 1.6;
+}
+
+/* ── TITLE SECTION ──────────────────────────── */
+.title-section {
+  background-color: #1a2e1a;
+  color: #faf7f2;
+  padding: 60px 64px;
+}
+
+.title-section h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.title-section .subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: #a8c97f;
+}
+
+/* ── SECTIONS ───────────────────────────────── */
+.section {
+  padding: 56px 64px;
+  border-bottom: 1px solid #ddd8cf;
+}
+
+.section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a2e1a;
+}
+
+.section-intro {
+  font-size: 16px;
+  color: #6b6459;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+
+/* ── CHART ROW ──────────────────────────────── */
+.chart-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.chart-container {
+  flex: 0 0 auto;
+}
+
+/* ── INSIGHT BOX ────────────────────────────── */
+.insight-box {
+  flex: 1;
+  background-color: #f0ede6;
+  border-left: 4px solid #4e9dc4;
+  padding: 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  align-self: center;
+}
+
+.insight-box p {
+  margin-bottom: 10px;
+}
+
+.insight-box p:last-child {
+  margin-bottom: 0;
+}
+
+.insight-box strong {
+  color: #1a2e1a;
+}
+
+.source {
+  font-size: 12px;
+  color: #9b9590;
+  margin-top: 12px;
+}
+
+.hero-layout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 0 0 auto;
+  text-align: center;
+  max-width: 400px;
+  padding-bottom: 20px;
+}
+
+.hero-animal-wrap {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+
+.hero-animal-img--tiger {
+  height: 200px;
+  width: auto;
+ 
+  
+}
+
+.hero-animal-img--orang {
+  height: 220px;
+  width: auto;
+  
+}
+
+.hero-animal-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 13px;
+  color: #6b9e4a;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+
+/* ── INTRODUCTION ───────────────────────────── */
+.intro-section {
+  padding: 32px 64px;
+  border-bottom: 1px solid #ddd8cf;
+  display: flex;
+  background-color: #f0f5ee;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro-text {
+  max-width: 720px;
+}
+
+.intro-stats {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch; 
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #1a2e1a;
+  color: #faf7f2;
+  padding: 20px 16px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.stat-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #a8c97f;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+}
