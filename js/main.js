@@ -8,6 +8,8 @@ const driverColorScale = {
   "domain": ["Agriculture", "Logging", "Shifting Cultivation", "Settlements", "Mining", "Wildfire", "Other"],
   "range":  ["#D55E00", "#E69F00", "#F0E442", "#CC79A7", "#0072B2", "#56B4E9", "#009E73"]
 };
+
+
  
 // ── Chart 1: Donut ───────────────────────────────────────
 const donutSpec = {
@@ -470,6 +472,12 @@ const heatmapSpec = {
       { "class": "Sharks & Rays",    "threat": "Pollution",                   "count": 50  }
     ]
   },
+  "params": [
+    {
+      "name": "highlight",
+      "select": { "type": "point", "fields": ["class"] }
+    }
+  ],
   "mark": { "type": "rect", "cornerRadius": 2 },
   "encoding": {
     "x": {
@@ -503,6 +511,10 @@ const heatmapSpec = {
         "gradientLength": 120
       }
     },
+    "opacity": {
+      "condition": { "param": "highlight", "value": 1 },
+      "value": 0.2
+    },
     "tooltip": [
       { "field": "class",  "type": "nominal",      "title": "Species group" },
       { "field": "threat", "type": "nominal",      "title": "Threat"        },
@@ -535,12 +547,8 @@ const lollipopSpec = {
           "sort": ["Decreasing", "Unknown", "Stable", "Increasing"],
           "axis": { "title": null, "labelFontSize": 12 }
         },
-        "x": {
-          "datum": 0,           "type": "quantitative"
-        },
-        "x2": {
-          "field": "count",     "type": "quantitative"
-        }
+        "x":  { "datum": 0,            "type": "quantitative" },
+        "x2": { "field": "count",      "type": "quantitative" }
       }
     },
     {
@@ -559,7 +567,7 @@ const lollipopSpec = {
           "field": "trend", "type": "nominal",
           "scale": {
             "domain": ["Decreasing", "Unknown", "Stable", "Increasing"],
-            "range":  ["#D55E00", "#CC79A7", "#E69F00", "#009E73"]
+            "range":  ["#D55E00", "#CC79A7", "#E69F00", "#0072B2"]
           },
           "legend": null
         },
@@ -583,9 +591,17 @@ const lollipopSpec = {
           "field": "trend", "type": "nominal",
           "scale": {
             "domain": ["Decreasing", "Unknown", "Stable", "Increasing"],
-            "range":  ["#D55E00", "#CC79A7", "#E69F00", "#009E73"]
+            "range":  ["#D55E00", "#CC79A7", "#E69F00", "#0072B2"]
           }
         }
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 8, "dy": -18, "fontSize": 12, "fontStyle": "italic", "color": "#D55E00" },
+      "encoding": {
+        "y": { "datum": "Decreasing", "type": "nominal" },
+        "x": { "datum": 1457, "type": "quantitative" },
+        "text": { "value": "More than half of all assessed species" }
       }
     }
   ],
@@ -595,54 +611,100 @@ const lollipopSpec = {
 
 
 
-
 // ── Chart 5: Stacked Area Chart ───────────────────────────
 const stackedAreaSpec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 500,
   "height": 300,
   "data": { "values": forestDriverData },
-  "mark": { "type": "area", "opacity": 0.85 },
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "quantitative",
-      "axis": {
-        "title": null,
-        "labelAngle": -45,
-        "grid": false,
-        "format": "d",
-        "tickCount": 12
+  "layer": [
+    {
+      "mark": { "type": "area", "opacity": 0.85 },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "axis": {
+            "title": null,
+            "labelAngle": -45,
+            "grid": false,
+            "format": "d",
+            "tickCount": 12
+          }
+        },
+        "y": {
+          "field": "hectares", "type": "quantitative", "stack": "zero",
+          "axis": {
+            "title": "Forest loss (hectares)",
+            "format": "~s",
+            "grid": true,
+            "gridColor": "#e8e4dc"
+          }
+        },
+        "color": {
+          "field": "driver", "type": "nominal",
+          "scale": driverColorScale,
+          "legend": {
+            "title": "Driver",
+            "orient": "right",
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          { "field": "year",     "type": "quantitative", "title": "Year",     "format": "d"    },
+          { "field": "driver",   "type": "nominal",      "title": "Driver"                     },
+          { "field": "hectares", "type": "quantitative", "title": "Hectares", "format": ",.0f" }
+        ]
       }
     },
-    "y": {
-      "field": "hectares", "type": "quantitative", "stack": "zero",
-      "axis": {
-        "title": "Forest loss (hectares)",
-        "format": "~s",
-        "grid": true,
-        "gridColor": "#e8e4dc"
+    {
+      "data": { "values": [ { "year": 2005, "hectares": 450000, "label": "Agriculture >70% of annual loss" } ] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fontStyle": "italic",
+        "color": "#7B3200"
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative" },
+        "y": { "field": "hectares", "type": "quantitative" },
+        "text": { "field": "label" }
       }
     },
-    "color": {
-      "field": "driver", "type": "nominal",
-      "scale": driverColorScale,
-      "legend": {
-        "title": "Driver",
-        "orient": "right",
-        "labelFontSize": 11
+    {
+      "data": { "values": [ { "year": 2014 } ] },
+      "mark": {
+        "type": "rule",
+        "color": "#7B3200",
+        "strokeWidth": 1.5,
+        "strokeDash": [6, 3]
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative" }
       }
     },
-    "tooltip": [
-      { "field": "year",     "type": "quantitative", "title": "Year",     "format": "d"    },
-      { "field": "driver",   "type": "nominal",      "title": "Driver"                     },
-      { "field": "hectares", "type": "quantitative", "title": "Hectares", "format": ",.0f" }
-    ]
-  },
+    {
+      "data": { "values": [ { "year": 2014, "hectares": 620000, "label": "Peak: 2014" } ] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#7B3200"
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative" },
+        "y": { "field": "hectares", "type": "quantitative" },
+        "text": { "field": "label" }
+      }
+    }
+  ],
   "view": { "stroke": null },
   "background": "transparent"
 };
- 
 // ── Chart 6: Bar Chart + Reference Line ───────────────────
 const driverBarSpec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -712,6 +774,14 @@ const driverBarSpec = {
         "y": { "value": 10 },
         "text": { "value": "Mean per driver" }
       }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 12, "fontWeight": "bold", "color": "#D55E00" },
+      "encoding": {
+        "y": { "datum": "Agriculture", "type": "nominal" },
+        "x": { "datum": 6999700, "type": "quantitative" },
+        "text": { "value": "74% of total" }
+      }
     }
   ],
   "view": { "stroke": null },
@@ -721,12 +791,12 @@ const driverBarSpec = {
 // ── Chart 7: Proportional Symbol Map ───────────────────────────────────
 const symbolMapSpec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 400,
+  "width": 480,
+  "height": 280,
   "projection": { 
     "type": "mercator",
     "center": [109.5, 4.0],
-    "scale": 1500
+    "scale": 1100
   },
   "layer": [
     {
@@ -799,12 +869,12 @@ const symbolMapSpec = {
 // ── Chart 8: Choropleth ───────────────────────────────────
 const choroSpec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 400,
+  "width": 480,
+  "height": 280,
   "projection": { 
     "type": "mercator",
     "center": [108.5, 4.5],
-    "scale": 1400
+    "scale": 1100
   },
   "layer": [
     {
@@ -840,11 +910,27 @@ const choroSpec = {
           { "field": "properties.cr",        "title": "Critically Endangered" }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          { "lat": 2.5,  "lon": 113.5, "label": "Sarawak" },
+          { "lat": 5.5,  "lon": 117.0, "label": "Sabah"   }
+        ]
+      },
+      "mark": { "type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#1a2e1a" },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude":  { "field": "lat", "type": "quantitative" },
+        "text":      { "field": "label" }
+      }
     }
   ],
   "view": { "stroke": null },
   "background": "transparent"
 };
+
+
 
 // ── Chart 9: Small Multiples Map ─────────────────────────
 function makeMiniMap(status, color) {
@@ -856,7 +942,7 @@ function makeMiniMap(status, color) {
       "color": "#2c3e2d"
     },
     "width": 340,
-    "height": 230,
+    "height": 280,
     "projection": { "type": "mercator" },
     "layer": [
       {
@@ -1086,7 +1172,7 @@ const dumbbellSpec = {
         "y": { "field": "group", "type": "nominal", "sort": { "field": "cr", "order": "descending" } },
         "x": { "field": "stable", "type": "quantitative",
                "axis": { "title": "Number of species", "grid": false } },
-        "color": { "value": "#009E73" },
+        "color": { "value": "#0072B2"  },
         "tooltip": [
           { "field": "group",  "title": "Species group"     },
           { "field": "stable", "title": "Stable population" }
@@ -1159,7 +1245,7 @@ const divergingSpec = {
         "x": {
           "field": "stable", "type": "quantitative"
         },
-        "color": { "value": "#009E73" },
+        "color": { "value":  "#0072B2"  },
         "tooltip": [
           { "field": "group",  "title": "Species group"     },
           { "field": "stable", "title": "Stable population" }
