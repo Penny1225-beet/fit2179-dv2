@@ -6,8 +6,7 @@
   <title>Malaysia's Endangered Wildlife</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Caveat:wght@600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Open+Sans:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <!-- Vega-Lite -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -15,9 +14,15 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 
 <body>
+
+  
 
   <!-- HERO -->
   <div class="title-section">
@@ -37,6 +42,15 @@
     </div>
   </div>
 
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav">
+  <a href="#risk">How many are at risk?</a>
+  <a href="#threats">What's threatening them?</a>
+  <a href="#forests">Where have the forests gone?</a>
+  <a href="#found">Where are they found?</a>
+  <a href="#hope">Is there still hope?</a>
+</nav>
+
   <!-- INTRODUCTION -->
   <div class="intro-section">
     <h2>Introduction to the Topic</h2>
@@ -46,30 +60,29 @@
     </div>
     <div class="intro-stats">
       <div class="stat-card">
-        <span class="stat-number">9.8M</span>
+        <span class="stat-number" data-val="9.8">9.8M</span>
         <span class="stat-desc">hectares of forest lost since 2001</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">336</span>
+       <span class="stat-number" data-val="336">336</span>
         <span class="stat-desc">species Critically Endangered</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">58%</span>
-       <span class="stat-desc">of assessed species declining</span>
+        <span class="stat-number" data-val="58" data-suffix="%">58%</span>
+        <span class="stat-desc">of assessed species declining</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">849</span>
+        <span class="stat-number" data-val="849">849</span>
         <span class="stat-desc">species recorded in Malaysia</span>
       </div>
     </div>
   </div>
 
-  <!-- SECTION 1: How many species are at risk? -->
-  <div class="section">
-    <h2>How many species are at risk?</h2>
+  <!-- SECTION 1 -->
+  <div class="section" id="risk">
+    <h2><span class="section-num">01</span> 🌿 How many species are at risk?</h2>
     <p class="section-intro">Malaysia is home to thousands of species — but hundreds face extinction.</p>
     
-    <!-- donut + stacked bar + insight -->
     <div class="chart-row">
       <div class="chart-container">
         <div id="chart1"></div>
@@ -84,7 +97,6 @@
       </div>
     </div>
 
-    <!-- normalized bar -->
     <div class="chart-row" style="margin-top: 32px;">
       <div class="chart-container-wide">
         <h3 class="chart-title">Proportion of threat level by species group</h3>
@@ -98,9 +110,9 @@
     </div>
   </div>
 
-  <!-- SECTION 2: What's threatening them? -->
-  <div class="section">
-    <h2>What's threatening them?</h2>
+  <!-- SECTION 2 -->
+  <div class="section" id="threats">
+  <h2><span class="section-num">02</span> ⚠️ What's threatening them?</h2>
     <p class="section-intro">From palm oil plantations to illegal poaching — Malaysia's wildlife faces threats on every front.</p>
 
     <div class="chart-row">
@@ -128,128 +140,140 @@
       </div>
     </div>
   </div>
-  
 
-  <!-- SECTION 3: Where have the forests gone? -->
-<div class="section">
-  <h2>Where have the forests gone?</h2>
-  <p class="section-intro">Malaysia has lost millions of hectares of forest since 2001 — and agriculture is by far the biggest driver.</p>
+  <!-- SECTION 3 -->
+  <div class="section" id="forests">
+   <h2><span class="section-num">03</span> 🌳 Where have the forests gone?</h2>
+    <p class="section-intro">Malaysia has lost millions of hectares of forest since 2001 — and agriculture is by far the biggest driver.</p>
 
-  <div class="chart-row">
-    <div class="chart-container">
-      <h3 class="chart-title">Forest loss by driver, 2001–2024 (hectares)</h3>
-      <div id="chart5"></div>
+    <div class="chart-row">
+      <div class="chart-container">
+        <h3 class="chart-title">Forest loss by driver, 2001-2024 (hectares)</h3>
+        <div id="chart5"></div>
+      </div>
+      <div class="insight-box">
+        <p><strong>Agriculture</strong> has dominated forest loss every year since 2001, consistently accounting for over 70% of annual destruction.</p>
+        <p>Logging surged between 2014 and 2017, reflecting intensified timber extraction in Sarawak and Sabah.</p>
+        <p>Since 2020, both agriculture and logging have declined — the first sustained drop in two decades.</p>
+        <p class="source">Source: Global Forest Watch 2025</p>
+      </div>
     </div>
-    <div class="insight-box">
-      <p><strong>Agriculture</strong> has dominated forest loss every year since 2001, consistently accounting for over 70% of annual destruction.</p>
-      <p>Logging surged between 2014 and 2017, reflecting intensified timber extraction in Sarawak and Sabah.</p>
-      <p>Since 2020, both agriculture and logging have declined — the first sustained drop in two decades.</p>
-      <p class="source">Source: Global Forest Watch 2025</p>
+
+    <div class="chart-row" style="margin-top: 40px;">
+      <div class="chart-container">
+        <h3 class="chart-title">Total loss by driver (2001–2024)</h3>
+        <div id="chart6"></div>
+      </div>
+      <div class="insight-box">
+        <p><strong>Agriculture</strong> accounts for nearly <strong>74%</strong> of all forest loss — far exceeding logging and all other causes combined.</p>
+        <p>Palm oil and other commodity crops have driven massive land clearance across Sabah, Sarawak and Peninsular Malaysia.</p>
+        <p class="source">Source: Global Forest Watch 2025</p>
+      </div>
     </div>
   </div>
 
-  <div class="chart-row" style="margin-top: 40px;">
-    <div class="chart-container">
-      <h3 class="chart-title">Total loss by driver (2001–2024)</h3>
-      <div id="chart6"></div>
-    </div>
-    <div class="insight-box">
-      <p><strong>Agriculture</strong> accounts for nearly <strong>74%</strong> of all forest loss — far exceeding logging and all other causes combined.</p>
-      <p>Palm oil and other commodity crops have driven massive land clearance across Sabah, Sarawak and Peninsular Malaysia.</p>
-      <p class="source">Source: Global Forest Watch 2025</p>
-    </div>
-  </div>
+  <!-- SECTION 4 -->
+  <div class="section" id="found">
+    <h2><span class="section-num">04</span> 🗺️ Where are they found?</h2>
+    <p class="section-intro">Critically Endangered species are concentrated in Sarawak, Sabah, and the forests of Peninsular Malaysia.</p>
 
-</div>
-
-  <!-- SECTION 4: Where are they found? -->
-<div class="section">
-  <h2>Where are they found?</h2>
-  <p class="section-intro">Critically Endangered species are concentrated in Sarawak, Sabah, and the forests of Peninsular Malaysia.</p>
-
-  <div class="chart-row">
-    <div class="chart-container">
-      <h3 class="chart-title">Critically Endangered species locations</h3>
-      <div id="chart7"></div>
+    <div class="chart-row">
+      <div class="chart-container">
+        <h3 class="chart-title">Critically Endangered species locations</h3>
+        <div id="chart7"></div>
+      </div>
+      <div class="insight-box">
+        <p>Most Critically Endangered species are found in <strong>Sarawak and Sabah</strong> — Malaysia's Borneo states, home to some of the oldest rainforests on Earth.</p>
+        <p>Peninsular Malaysia's central forest spine also harbours significant concentrations of at-risk species.</p>
+        <p class="source">Source: IUCN Red List 2025</p>
+      </div>
     </div>
-    <div class="insight-box">
-      <p>Most Critically Endangered species are found in <strong>Sarawak and Sabah</strong> — Malaysia's Borneo states, home to some of the oldest rainforests on Earth.</p>
-      <p>Peninsular Malaysia's central forest spine also harbours significant concentrations of at-risk species.</p>
+
+    <div class="chart-row" style="margin-top: 32px;">
+      <div class="chart-container">
+        <h3 class="chart-title">Threatened species density by state</h3>
+        <div id="chart8"></div>
+      </div>
+      <div class="insight-box">
+        <p><strong>Sarawak</strong> records the highest number of threatened species — nearly double that of Sabah.</p>
+        <p>Urban states like Kuala Lumpur and Putrajaya show near-zero records, reflecting habitat loss rather than species absence.</p>
+        <p class="source">Source: IUCN Red List 2025</p>
+      </div>
+    </div>
+
+    <div class="chart-row" style="margin-top: 32px;">
+      <div class="chart-container-wide">
+        <h3 class="chart-title">Species distribution by threat level</h3>
+        <div id="chart9"></div>
+      </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 16px; max-width: 1140px;">
+      <p>Critically Endangered species cluster heavily in <strong>Sarawak and Sabah</strong> — the very states facing the most severe deforestation.</p>
+      <p>This overlap between habitat loss and species risk is not a coincidence — it is a direct consequence of decades of land clearance.</p>
       <p class="source">Source: IUCN Red List 2025</p>
     </div>
   </div>
 
-  <div class="chart-row" style="margin-top: 32px;">
-    <div class="chart-container">
-      <h3 class="chart-title">Threatened species density by state</h3>
-      <div id="chart8"></div>
+  <!-- SECTION 5 -->
+  <div class="section" id="hope">
+    <h2><span class="section-num">05</span> 🌱 Is there still hope?</h2>
+    <p class="section-intro">Forest loss has declined since its peak in 2014 — but species recovery remains uncertain.</p>
+
+    <div class="chart-row">
+      <div class="chart-container">
+        <h3 class="chart-title">Total forest loss per year, 2001-2024 (hectares)</h3>
+        <div id="chart11"></div>
+      </div>
+      <div class="insight-box">
+        <p>Forest loss peaked at <strong>646,000 hectares in 2014</strong>, driven by agricultural expansion in Sarawak and Sabah.</p>
+        <p>Since 2020, annual loss has dropped by more than <strong>half</strong> — the lowest levels recorded in two decades.</p>
+        <p>This decline may reflect stricter logging moratoria and reduced commodity demand, but it is too early to declare recovery.</p>
+        <p class="source">Source: Global Forest Watch 2025</p>
+      </div>
     </div>
-    <div class="insight-box">
-      <p><strong>Sarawak</strong> records the highest number of threatened species — nearly double that of Sabah.</p>
-      <p>Urban states like Kuala Lumpur and Putrajaya show near-zero records, reflecting habitat loss rather than species absence.</p>
-      <p class="source">Source: IUCN Red List 2025</p>
+
+    <div class="chart-row" style="margin-top: 40px;">
+      <div class="chart-container">
+        <h3 class="chart-title">Critically Endangered vs stable population by species group</h3>
+        <div id="chart12"></div>
+      </div>
+      <div class="insight-box">
+        <p>For most species groups, the number of <strong>Critically Endangered</strong> species far exceeds those with a stable population trend.</p>
+        <p><strong>Sharks and Rays, Birds and Fish</strong> have zero species with a stable population — every assessed individual is in decline.</p>
+        <p>Flowering Plants show the closest balance, with 149 stable against 167 Critically Endangered.</p>
+        <p>Orange dots = Critically Endangered. Blue dots = Stable population.</p>
+        <p class="source">Source: IUCN Red List 2025</p>
+      </div>
+    </div>
+
+    <div class="chart-row" style="margin-top: 40px;">
+      <div class="chart-container">
+        <h3 class="chart-title">Population trend by species group</h3>
+        <div id="chart13"></div>
+      </div>
+      <div class="insight-box">
+        <p>Across every species group, <strong>declining populations vastly outnumber stable ones</strong> — the scale of collapse is system-wide, not isolated.</p>
+        <p>Corals, Sharks and Rays, and Birds have virtually no stable populations remaining. Without active conservation, local extinction is a real possibility.</p>
+        <p>Only Flowering Plants and Monocots show any meaningful stability — a fragile signal in an otherwise bleak picture.</p>
+        <p class="source">Source: IUCN Red List 2025</p>
+      </div>
     </div>
   </div>
-<!-- Small multiples -->
-  <div class="chart-row" style="margin-top: 32px;">
-  <div class="chart-container-wide">
-    <h3 class="chart-title">Species distribution by threat level</h3>
-    <div id="chart9"></div>
-  </div>
-</div>
-
-<div class="insight-box" style="margin-top: 16px; max-width: 1140px;">
-  <p>Critically Endangered species cluster heavily in <strong>East Malaysia (Borneo)</strong>, particularly in Sarawak's interior forests.</p>
-  <p>Vulnerable species are more evenly spread, suggesting early-stage threats across both Peninsular and East Malaysia.</p>
-  <p class="source">Source: IUCN Red List 2025</p>
-</div>
-
-<!-- SECTION 5: Is there still hope?-->
-<div class="section">
-  <h2>Is there still hope?</h2>
-  <p class="section-intro">Forest loss has declined since its peak in 2014 — but species recovery remains uncertain.</p>
-
-  <div class="chart-row">
-    <div class="chart-container">
-      <h3 class="chart-title">Total forest loss per year, 2001–2024 (hectares)</h3>
-      <div id="chart11"></div>
-    </div>
-    <div class="insight-box">
-      <p>Forest loss peaked at <strong>646,000 hectares in 2014</strong>, driven by agricultural expansion in Sarawak and Sabah.</p>
-      <p>Since 2020, annual loss has dropped by more than <strong>half</strong> — the lowest levels recorded in two decades.</p>
-      <p>This decline may reflect stricter logging moratoria and reduced commodity demand, but it is too early to declare recovery.</p>
-      <p class="source">Source: Global Forest Watch 2025</p>
-    </div>
-  </div>
-
-<div class="chart-row" style="margin-top: 40px;">
-  <div class="chart-container">
-    <h3 class="chart-title">Critically Endangered vs stable population by species group</h3>
-    <div id="chart12"></div>
-  </div>
-  <div class="insight-box">
-    <p>For most species groups, the number of <strong>Critically Endangered</strong> species far exceeds those with a stable population trend.</p>
-    <p><strong>Sharks and Rays, Birds and Fish</strong> have zero species with a stable population — every assessed individual is in decline.</p>
-    <p>Flowering Plants show the closest balance, with 149 stable against 167 Critically Endangered.</p>
-    <p>Orange dots = Critically Endangered. Green dots = Stable population.</p>
-    <p class="source">Source: IUCN Red List 2025</p>
-  </div>
-</div>
-<div class="chart-row" style="margin-top: 40px;">
-  <div class="chart-container">
-    <h3 class="chart-title">Population trend by species group</h3>
-    <div id="chart13"></div>
-  </div>
-  <div class="insight-box">
-    <p>Across every species group, <strong>declining populations vastly outnumber stable ones</strong>.</p>
-    <p>Corals, Sharks and Rays, and Birds show near-zero stable populations — their futures depend entirely on external intervention.</p>
-    <p>Only Flowering Plants and Monocots have meaningful stable populations, offering a cautious reason for hope.</p>
-    <p class="source">Source: IUCN Red List 2025</p>
-  </div>
-</div>
-
-</div>
 
 <script src="js/main.js"></script>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <h2>About This Visualisation</h2>
+    <p>Malaysia is one of the world's most biodiverse nations, yet hundreds of its species face extinction. This visualisation draws on IUCN Red List and Global Forest Watch data to tell the story of what is being lost, why it is happening, and where hope remains.</p>
+    <hr class="footer-divider">
+    <p><strong>Author:</strong> Yiwen Pan</p>
+    <p><strong>Date:</strong> 2026</p>
+    <p><strong>Data:</strong> IUCN Red List 2025 — species assessments, taxonomy, population trends, and threat categories. Available at <a href="https://www.iucnredlist.org" target="_blank">iucnredlist.org</a></p>
+    <p><strong>Map data:</strong> Global Forest Watch 2025 — Malaysia tree cover loss by driver, 2001–2024. Available at <a href="https://www.globalforestwatch.org" target="_blank">globalforestwatch.org</a></p>
+    <p><strong>AI acknowledgement:</strong> Generative AI was used to support wording, layout planning, and code drafting. Final design and submission decisions remain the author's responsibility.</p>
+  </div>
+
 </body>
 </html>
